@@ -6,7 +6,7 @@
   <title>Fênix Auto Partes — Latarias e Acessórios Automotivos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -56,16 +56,16 @@
     /* textos ao lado do logo */
     .logo-text { margin-left: 0; }
     .logo-text h1 {
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 52px; font-weight: 700;
-      color: #fff; letter-spacing: 4px;
+      font-family: 'Playfair Display', serif;
+      font-size: 58px; font-weight: 900;
+      color: #fff; letter-spacing: 6px;
       line-height: 1; text-transform: uppercase;
     }
     .logo-text .subtitle {
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 28px; font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700;
       color: #fff;
-      letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+      letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;
     }
     .logo-text .tagline {
       font-family: 'Oswald', sans-serif;
@@ -219,12 +219,23 @@
     .card-header-stripe { height: 5px; background: var(--orange); flex-shrink: 0; }
 
     .card-img-wrap {
-      width: 100%; height: 150px;
+      width: 100%; height: 160px;
       background: var(--blue-light);
       overflow: hidden;
       display: flex; align-items: center; justify-content: center;
+      position: relative;
     }
-    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+    /* imagem preenche bem sem distorcer */
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      padding: 6px;
+      background: var(--blue-light);
+      transition: transform 0.2s;
+    }
+    .cat-card:hover .card-img-wrap img { transform: scale(1.04); }
     .card-img-placeholder {
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
@@ -510,6 +521,18 @@
             imgEl.src = img.src;
             imgEl.alt = itemName;
             imgEl.onclick = function() { openLightbox(img.src, itemName); };
+            /* ajusta encaixe conforme proporção da imagem */
+            var ratio = img.naturalWidth / img.naturalHeight;
+            if (ratio > 1.4) {
+              imgEl.style.objectFit = 'cover';
+              imgEl.style.padding = '0';
+            } else if (ratio < 0.75) {
+              imgEl.style.objectFit = 'contain';
+              imgEl.style.padding = '8px';
+            } else {
+              imgEl.style.objectFit = 'cover';
+              imgEl.style.padding = '0';
+            }
             imgWrapEl.insertBefore(imgEl, imgWrapEl.firstChild);
           };
           img.onerror = function() { idx++; tryNext(); };
