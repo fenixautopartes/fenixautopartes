@@ -138,14 +138,14 @@
     /* ── BANNER FACHADA ── */
     .fachada-wrap {
       width: 100%;
-      max-height: 420px;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
       background: var(--blue-mid);
+      line-height: 0;
     }
     .fachada-img {
-      width: 100%; max-height: 420px;
-      object-fit: cover; display: block;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
     /* ── MAIN ── */
@@ -323,8 +323,7 @@
       .hours-bar-inner { flex-direction: column; gap: 4px; text-align: center; }
       .hours-sep { display: none; }
 
-      .fachada-wrap { max-height: 220px; }
-      .fachada-img { max-height: 220px; }
+
 
       .search-wrap input { font-size: 14px; padding: 10px 14px 10px 40px; }
       .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
