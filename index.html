@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fênix Auto Partes — Latarias e Acessórios Automotivos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:       #E85C00;
+      --orange-mid:   #FF7A1A;
+      --orange-light: #FFF0E6;
+      --blue:         #002B8A;
+      --blue-mid:     #003DA6;
+      --blue-light:   #E6EBF8;
+      --yellow:       #F5C500;
+      --white:        #FFFFFF;
+      --gray-bg:      #F5F2EE;
+      --gray-border:  #E0D8CF;
+      --text:         #1A1208;
+      --text-muted:   #7A6A55;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito Sans', sans-serif; background: var(--gray-bg); color: var(--text); min-height: 100vh; }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--blue);
+      border-bottom: 5px solid var(--orange);
+    }
+    .header-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: stretch; justify-content: space-between; flex-wrap: wrap;
+    }
+
+    /* bloco logo + nome */
+    .logo-block {
+      display: flex; align-items: center; gap: 22px;
+      padding: 1.4rem 1.5rem; flex: 1;
+    }
+
+    /* círculo do logo */
+    .logo-area {
+      width: 150px; height: 150px; flex-shrink: 0;
+      border-radius: 50%; overflow: hidden;
+      border: 5px solid var(--orange);
+      background: var(--blue-mid);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .logo-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* textos ao lado do logo */
+    .logo-text { margin-left: 0; }
+    .logo-text h1 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 52px; font-weight: 700;
+      color: #fff; letter-spacing: 4px;
+      line-height: 1; text-transform: uppercase;
+    }
+    .logo-text .subtitle {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 28px; font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+    }
+    .logo-text .tagline {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px; font-weight: 600;
+      color: var(--yellow);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px;
+    }
+    .logo-text .desde {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px; font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 3px; text-transform: uppercase; margin-top: 5px;
+    }
+
+    /* bloco de telefones (laranja) */
+    .phones-block {
+      background: var(--orange);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 0 2.5rem; gap: 8px;
+    }
+    .phones-label {
+      font-size: 11px; font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .phone-item {
+      display: flex; align-items: center; gap: 8px;
+      color: #fff; font-size: 22px; font-weight: 800;
+      font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;
+    }
+    .phone-item svg { width: 18px; height: 18px; opacity: 0.85; }
+
+    /* ── ADDRESS BAR ── */
+    .address-bar {
+      background: var(--blue-mid);
+      padding: 0.6rem 1.5rem;
+      border-bottom: 2px solid var(--yellow);
+    }
+    .address-bar-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+    }
+    .address-bar svg { width: 15px; height: 15px; color: var(--yellow); flex-shrink: 0; }
+    .address-bar span { font-size: 13.5px; color: #fff; font-weight: 800; }
+
+    /* ── HOURS BAR ── */
+    .hours-bar {
+      background: var(--orange-light);
+      border-bottom: 3px solid var(--orange);
+      padding: 0.65rem 1.5rem;
+    }
+    .hours-bar-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 0.5rem 2rem;
+    }
+    .hours-label {
+      font-size: 11px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--orange);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hours-label svg { width: 14px; height: 14px; }
+    .hours-item { font-size: 13px; color: var(--text); font-weight: 700; }
+    .hours-item strong { color: var(--orange); }
+    .hours-sep { color: var(--text-muted); font-size: 13px; }
+
+    /* ── BANNER FACHADA ── */
+    .fachada-wrap {
+      width: 100%;
+      max-height: 420px;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--blue-mid);
+    }
+    .fachada-img {
+      width: 100%; max-height: 420px;
+      object-fit: cover; display: block;
+    }
+
+    /* ── MAIN ── */
+    .main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+    .section-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem;
+    }
+    .section-header::before {
+      content: ''; width: 5px; height: 24px;
+      background: var(--orange); border-radius: 3px; flex-shrink: 0;
+    }
+    .section-header::after { content: ''; flex: 1; height: 2px; background: var(--gray-border); }
+    .section-header h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px; font-weight: 600;
+      color: var(--blue); white-space: nowrap;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .catalogo-panel {
+      display: block;
+      padding-top: 1.75rem;
+    }
+
+    /* ── TOOLBAR / BUSCA ── */
+    .toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; }
+    .search-wrap { position: relative; flex: 1; }
+    .search-wrap input {
+      width: 100%; background: var(--white);
+      border: 2px solid var(--gray-border); border-radius: 10px;
+      color: var(--text); font-family: 'Nunito Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      padding: 11px 16px 11px 44px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-wrap input::placeholder { color: var(--text-muted); font-weight: 400; }
+    .search-wrap input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(232,92,0,0.12);
+    }
+    .search-icon {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); pointer-events: none;
+    }
+    .search-icon svg { width: 18px; height: 18px; display: block; }
+
+
+    /* ── GRID ── */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 10px;
+    }
+
+    /* ── CARD ── */
+    .cat-card {
+      background: var(--white);
+      border: 2px solid var(--gray-border);
+      border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+      cursor: default;
+    }
+    .cat-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 18px rgba(232,92,0,0.13);
+      transform: translateY(-2px);
+    }
+    .cat-card.hidden { display: none; }
+
+    .card-header-stripe { height: 5px; background: var(--orange); flex-shrink: 0; }
+
+    .card-img-wrap {
+      width: 100%; height: 150px;
+      background: var(--blue-light);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+    .card-img-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 6px; width: 100%; height: 100%;
+    }
+    .card-img-placeholder svg { width: 26px; height: 26px; opacity: 0.3; color: var(--blue); }
+    .card-img-placeholder span { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+
+    .card-body {
+      padding: 9px 12px 11px;
+      display: flex; align-items: center; gap: 8px;
+      border-top: 1px solid var(--gray-border);
+    }
+    .cat-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0;
+    }
+    .cat-name { font-size: 13px; color: var(--text); font-weight: 700; line-height: 1.3; }
+
+    .no-results { text-align: center; color: var(--text-muted); font-size: 14px; padding: 3rem; display: none; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.88);
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 14px; padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 78vh; border-radius: 12px; object-fit: contain; }
+    .lightbox-title {
+      color: var(--yellow); font-family: 'Oswald', sans-serif;
+      font-size: 18px; font-weight: 600; letter-spacing: 1px;
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: rgba(255,255,255,0.15); border: none; border-radius: 50%;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff;
+    }
+    .lightbox-close svg { width: 20px; height: 20px; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--blue);
+      border-top: 5px solid var(--orange);
+      padding: 2rem 1.5rem; text-align: center;
+    }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700;
+      color: var(--yellow); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .footer-divider { width: 60px; height: 3px; background: var(--orange); margin: 0.5rem auto 0.75rem; border-radius: 2px; }
+    .footer-phones {
+      font-size: 15px; color: #fff; font-weight: 800;
+      font-family: 'Oswald', sans-serif; letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .footer p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 2; font-weight: 600; }
+
+    /* ── RESPONSIVO ── */
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+
+      .header-inner { flex-direction: column; align-items: stretch; }
+
+      .logo-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 1.25rem 1rem 1.25rem;
+      }
+
+      .logo-area { width: 100px; height: 100px; }
+      .logo-text { margin-left: 0; }
+      .logo-text h1 { font-size: 36px; letter-spacing: 3px; }
+      .logo-text .subtitle { font-size: 20px; }
+      .logo-text .tagline { font-size: 13px; }
+
+      .phones-block {
+        flex-direction: row; flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        gap: 6px 24px;
+        border-top: 2px solid rgba(255,255,255,0.2);
+      }
+      .phones-label { width: 100%; text-align: center; }
+      .phone-item { font-size: 17px; }
+
+      /* barras sem padding-left extra no mobile */
+      .address-bar { padding: 0.6rem 1rem; }
+      .address-bar span { font-size: 12.5px; text-align: center; }
+      .hours-bar { padding: 0.65rem 1rem; }
+      .hours-bar-inner { flex-direction: column; gap: 4px; text-align: center; }
+      .hours-sep { display: none; }
+
+      .fachada-wrap { max-height: 220px; }
+      .fachada-img { max-height: 220px; }
+
+      .search-wrap input { font-size: 14px; padding: 10px 14px 10px 40px; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .card-img-wrap { height: 110px; }
+      .cat-name { font-size: 12px; }
+      .section-header h2 { font-size: 18px; }
+      .footer-logo { font-size: 20px; }
+      .footer-phones { font-size: 13px; }
+      .footer p { font-size: 12px; }
+    }
+
+    @media (max-width: 380px) {
+      .logo-text h1 { font-size: 28px; }
+      .logo-text .subtitle { font-size: 16px; }
+      .phone-item { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+
+      <div class="logo-block">
+        <!-- Logo: coloque logo.png na mesma pasta do HTML -->
+        <div class="logo-area">
+          <img src="logo.png" alt="Logo Fênix Auto Partes" />
+        </div>
+        <div class="logo-text">
+          <h1>Fênix</h1>
+          <div class="subtitle">Auto Partes</div>
+          <div class="tagline">Latarias e Acessórios Automotivos</div>
+          <div class="desde">Desde 1991</div>
+        </div>
+      </div>
+
+      <div class="phones-block">
+        <div class="phones-label">Fale conosco</div>
+        <div class="phone-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (11) 2097-3211
+        </div>
+        <div class="phone-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (11) 2296-0697
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ADDRESS BAR -->
+  <div class="address-bar">
+    <div class="address-bar-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP</span>
+    </div>
+  </div>
+
+  <!-- HOURS BAR -->
+  <div class="hours-bar">
+    <div class="hours-bar-inner">
+      <div class="hours-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Horário de Funcionamento
+      </div>
+      <div class="hours-item"><strong>Seg – Sex</strong>&nbsp; 08h às 17h</div>
+      <span class="hours-sep">|</span>
+      <div class="hours-item"><strong>Sábado</strong>&nbsp; 08h às 12h</div>
+    </div>
+  </div>
+
+  <!-- BANNER FACHADA -->
+  <div class="fachada-wrap">
+    <img src="fachada.jpg" alt="Fachada Fênix Auto Partes" class="fachada-img" />
+  </div>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="catalogo-panel" id="catalogoPanel">
+
+    <div class="section-header"><h2>Catálogo de Produtos</h2></div>
+
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input type="text" id="searchInput" placeholder="Buscar produto..." oninput="filterItems()" />
+      </div>
+    </div>
+
+    <div class="categories-grid" id="grid"></div>
+    <div class="no-results" id="noResults">Nenhum produto encontrado para essa busca.</div>
+
+    </div><!-- fim catalogo-panel -->
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Fênix Auto Partes</div>
+      <div class="footer-divider"></div>
+      <div class="footer-phones">(11) 2097-3211 &nbsp;|&nbsp; (11) 2296-0697</div>
+      <p>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP<br>Seg–Sex: 08h–17h &nbsp;|&nbsp; Sáb: 08h–12h</p>
+    </div>
+  </footer>
+
+  <script>
+    var items = [
+      "Acabamento de Paralama","Acabamento Interno","Acendedor",
+      "Aditivos","Aerofólios","Algodão","Amortecedor","Antenas","Anti Ruído","Apliques","Aros","Assoalhos",
+      "Bagagitos","Batentes","Bateria","Bola de Câmbio","Borracha de Porta","Borrachas Diversas",
+      "Botões","Braço com Palhetas","Braços Diversos","Brake Light / Luz de Freio","Buzina",
+      "Cabos e Cordas","Caixas Int./Externa","Calhas Diversas","Calotas","Canaletas","Capas",
+      "Capuz","Cera e Massa de Polir","Chave de Roda","Chave de Seta","Cilindros com Chave",
+      "Cintos de Segurança","Cinzeiro","Circuitos","Coifa de Câmbio","Cola","Comutador",
+      "Desengripante","Difusor de Ar","Dobradiças","Dupla Face",
+      "Emblemas e Logotipos","Esguichador de Água","Estopa","Estribos","Extintor",
+      "Faixas","Farol","Farol de Milha","Fechadura","Ferragens","Filtros",
+      "Fitas Adesivas","Folha de Porta","Forrações","Friso de Para-choque","Friso de Teto","Friso Lateral","Fusível",
+      "Grades","Grades de Para-choque","Grampos","Graxa","Guarnições",
+      "Hastes","Interruptor",
+      "Lâmpada","Lanterna de Placa","Lanterna de Teto","Lanterna Dianteira",
+      "Lanterna Lateral","Lanterna Traseira","Lateral",
+      "Lente c/ Base de Retrovisor","Lente de Farol","Lente de Lanterna","Lente de Retrovisor",
+      "Limitador","Lubrificantes",
+      "Macaco","Maçanetas","Mangueira","Manivelas","Massa de Vedação","Materiais de Limpeza",
+      "Máquina de Vidro","Máscara de Painel","Molduras Int./Ext.","Moto Bomba",
+      "Odorizante","Óleo de Freio",
+      "Painel Dianteiro","Painel Traseiro","Palhetas","Parabarro","Para-choque","Paralama",
+      "Parafusos","Pastilhas","Pestanha","Pinos","Polainas","Porca de Estepe",
+      "Porta Objetos","Portinhola","Portas","Protetores","Puxador",
+      "Quebra-sol","Querosene",
+      "Rack","Radiador","Refletor","Regulador","Relógio","Remendos Diversos",
+      "Reservatório","Retrovisor","Roldanas",
+      "Saias","Soleiras","Solventes","Spoiler","Spray","Suportes","Suportes Tampão",
+      "Tampa Traseira","Tampas Diversas","Tanque","Tapetes","Telas","Terminal",
+      "Thinner","Tomada de Engate","Trava","Travessas","Triângulo","Trincos",
+      "Varetas","Vedantes","Velas","Viga de Para-choque","Volante"
+    ];
+
+    var EXTS = ['jpg','jpeg','png','webp','gif'];
+    var grid = document.getElementById('grid');
+
+    items.forEach(function(name) {
+      var card = document.createElement('div');
+      card.className = 'cat-card';
+      card.dataset.name = name.toLowerCase();
+
+      /* faixa laranja no topo do card */
+      var stripe = document.createElement('div');
+      stripe.className = 'card-header-stripe';
+      card.appendChild(stripe);
+
+      /* área da imagem */
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'card-img-wrap';
+
+      /* placeholder enquanto não há foto */
+      var ph = document.createElement('div');
+      ph.className = 'card-img-placeholder';
+      ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Sem foto</span>';
+      imgWrap.appendChild(ph);
+
+      /* tenta carregar imagem pelo nome da categoria */
+      (function(imgWrapEl, placeholderEl, itemName) {
+        var idx = 0;
+        function tryNext() {
+          if (idx >= EXTS.length) return;
+          var img = new Image();
+          img.onload = function() {
+            placeholderEl.style.display = 'none';
+            var imgEl = document.createElement('img');
+            imgEl.src = img.src;
+            imgEl.alt = itemName;
+            imgEl.onclick = function() { openLightbox(img.src, itemName); };
+            imgWrapEl.insertBefore(imgEl, imgWrapEl.firstChild);
+          };
+          img.onerror = function() { idx++; tryNext(); };
+          img.src = itemName + '.' + EXTS[idx];
+        }
+        tryNext();
+      })(imgWrap, ph, name);
+
+      card.appendChild(imgWrap);
+
+      /* nome do produto */
+      var body = document.createElement('div');
+      body.className = 'card-body';
+      var dot = document.createElement('div');
+      dot.className = 'cat-dot';
+      var nameEl = document.createElement('span');
+      nameEl.className = 'cat-name';
+      nameEl.textContent = name;
+      body.appendChild(dot);
+      body.appendChild(nameEl);
+      card.appendChild(body);
+
+      grid.appendChild(card);
+    });
+
+
+    /* ── BUSCA ── */
+    function filterItems() {
+      var q = document.getElementById('searchInput').value.toLowerCase().trim();
+      var cards = grid.querySelectorAll('.cat-card');
+      var count = 0;
+      cards.forEach(function(c) {
+        var match = !q || c.dataset.name.includes(q);
+        c.classList.toggle('hidden', !match);
+        if (match) count++;
+      });
+      document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+    }
+
+    /* ── LIGHTBOX ── */
+    function openLightbox(src, title) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
