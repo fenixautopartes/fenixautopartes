@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --orange:       #E85C00;
       --orange-mid:   #FF7A1A;
@@ -24,155 +23,56 @@
       --text:         #1A1208;
       --text-muted:   #7A6A55;
     }
-
     html { scroll-behavior: smooth; }
     body { font-family: 'Nunito Sans', sans-serif; background: var(--gray-bg); color: var(--text); min-height: 100vh; }
 
     /* ── HEADER ── */
-    .header {
-      background: var(--blue);
-      border-bottom: 5px solid var(--orange);
-    }
-    .header-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: stretch; justify-content: space-between; flex-wrap: wrap;
-    }
-
-    /* bloco logo + nome */
-    .logo-block {
-      display: flex; align-items: center; gap: 22px;
-      padding: 1.4rem 1.5rem; flex: 1;
-    }
-
-    /* círculo do logo */
-    .logo-area {
-      width: 150px; height: 150px; flex-shrink: 0;
-      border-radius: 50%; overflow: hidden;
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-    }
+    .header { background: var(--blue); border-bottom: 5px solid var(--orange); }
+    .header-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: stretch; justify-content: space-between; flex-wrap: wrap; }
+    .logo-block { display: flex; align-items: center; gap: 22px; padding: 1.4rem 1.5rem; flex: 1; }
+    .logo-area { width: 150px; height: 150px; flex-shrink: 0; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
     .logo-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* textos ao lado do logo */
-    .logo-text { margin-left: 0; }
-    .logo-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 58px; font-weight: 900;
-      color: #fff; letter-spacing: 6px;
-      line-height: 1; text-transform: uppercase;
-    }
-    .logo-text .subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px; font-weight: 700;
-      color: #fff;
-      letter-spacing: 4px; text-transform: uppercase; margin-top: 2px;
-    }
-    .logo-text .tagline {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px; font-weight: 600;
-      color: var(--yellow);
-      letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px;
-    }
-    .logo-text .desde {
-      font-family: 'Oswald', sans-serif;
-      font-size: 18px; font-weight: 600;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 3px; text-transform: uppercase; margin-top: 5px;
-    }
-
-    /* bloco de telefones (laranja) */
-    .phones-block {
-      background: var(--orange);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 0 2.5rem; gap: 8px;
-    }
-    .phones-label {
-      font-size: 11px; font-weight: 800;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 2px; text-transform: uppercase;
-    }
-    .phone-item {
-      display: flex; align-items: center; gap: 8px;
-      color: #fff; font-size: 22px; font-weight: 800;
-      font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;
-    }
+    .logo-text h1 { font-family: 'Playfair Display', serif; font-size: 58px; font-weight: 900; color: #fff; letter-spacing: 6px; line-height: 1; text-transform: uppercase; }
+    .logo-text .subtitle { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px; }
+    .logo-text .tagline { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; color: var(--yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; }
+    .logo-text .desde { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+    .phones-block { background: var(--orange); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 2.5rem; gap: 8px; }
+    .phones-label { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.85); letter-spacing: 2px; text-transform: uppercase; }
+    .phone-item { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 22px; font-weight: 800; font-family: 'Oswald', sans-serif; letter-spacing: 0.5px; }
     .phone-item svg { width: 18px; height: 18px; opacity: 0.85; }
 
     /* ── ADDRESS BAR ── */
-    .address-bar {
-      background: var(--blue-mid);
-      padding: 0.6rem 1.5rem;
-      border-bottom: 2px solid var(--yellow);
-    }
-    .address-bar-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 8px; flex-wrap: wrap;
-    }
+    .address-bar { background: var(--blue-mid); padding: 0.6rem 1.5rem; border-bottom: 2px solid var(--yellow); }
+    .address-bar-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .address-bar svg { width: 15px; height: 15px; color: var(--yellow); flex-shrink: 0; }
-    .address-bar span { font-size: 13.5px; color: #fff; font-weight: 800; }
+    .address-link { font-size: 13.5px; color: #fff; font-weight: 800; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.4); transition: border-color 0.15s; }
+    .address-link:hover { border-color: var(--yellow); color: var(--yellow); }
 
     /* ── HOURS BAR ── */
-    .hours-bar {
-      background: var(--orange-light);
-      border-bottom: 3px solid var(--orange);
-      padding: 0.65rem 1.5rem;
-    }
-    .hours-bar-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 0.5rem 2rem;
-    }
-    .hours-label {
-      font-size: 11px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 1.5px; color: var(--orange);
-      display: flex; align-items: center; gap: 6px;
-    }
+    .hours-bar { background: var(--orange-light); border-bottom: 3px solid var(--orange); padding: 0.65rem 1.5rem; }
+    .hours-bar-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem 2rem; }
+    .hours-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); display: flex; align-items: center; gap: 6px; }
     .hours-label svg { width: 14px; height: 14px; }
     .hours-item { font-size: 13px; color: var(--text); font-weight: 700; }
     .hours-item strong { color: var(--orange); }
     .hours-sep { color: var(--text-muted); font-size: 13px; }
 
-    /* ── BANNER FACHADA ── */
-    .fachada-wrap {
-      width: 100%;
-      background: var(--blue-mid);
-      line-height: 0;
-    }
-    .fachada-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
+    /* ── FACHADA ── */
+    .fachada-wrap { width: 100%; background: var(--blue-mid); line-height: 0; }
+    .fachada-img { width: 100%; height: auto; display: block; object-fit: contain; }
 
     /* ── MAIN ── */
     .main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
-
-    .section-header {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem;
-    }
-    .section-header::before {
-      content: ''; width: 5px; height: 24px;
-      background: var(--orange); border-radius: 3px; flex-shrink: 0;
-    }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.5rem; }
+    .section-header::before { content: ''; width: 5px; height: 24px; background: var(--orange); border-radius: 3px; flex-shrink: 0; }
     .section-header::after { content: ''; flex: 1; height: 2px; background: var(--gray-border); }
-    .section-header h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 22px; font-weight: 600;
-      color: var(--blue); white-space: nowrap;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
+    .section-header h2 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; color: var(--blue); white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; }
 
-    .catalogo-panel {
-      display: block;
-      padding-top: 1.75rem;
-    }
+    /* ── TOOLBAR ── */
+    .toolbar { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; }
 
-    /* ── TOOLBAR / BUSCA ── */
-    .toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; }
-    .search-wrap { position: relative; flex: 1; }
+    /* busca com autocomplete */
+    .search-wrap { position: relative; flex: 1; min-width: 220px; }
     .search-wrap input {
       width: 100%; background: var(--white);
       border: 2px solid var(--gray-border); border-radius: 10px;
@@ -182,160 +82,128 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .search-wrap input::placeholder { color: var(--text-muted); font-weight: 400; }
-    .search-wrap input:focus {
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(232,92,0,0.12);
-    }
-    .search-icon {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      color: var(--text-muted); pointer-events: none;
-    }
+    .search-wrap input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,92,0,0.12); }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
     .search-icon svg { width: 18px; height: 18px; display: block; }
 
+    /* dropdown autocomplete */
+    .autocomplete-list {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: var(--white); border: 2px solid var(--orange);
+      border-radius: 10px; z-index: 100; max-height: 220px; overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12); display: none;
+    }
+    .autocomplete-list.open { display: block; }
+    .autocomplete-item {
+      padding: 10px 16px; font-size: 14px; font-weight: 600;
+      color: var(--text); cursor: pointer; border-bottom: 1px solid var(--gray-border);
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover, .autocomplete-item.active { background: var(--orange-light); color: var(--orange); }
+    .autocomplete-item mark { background: none; color: var(--orange); font-weight: 800; }
+
+    /* ── BARRA A-Z ── */
+    .az-bar {
+      display: flex; flex-wrap: wrap; gap: 4px;
+      margin-bottom: 1.25rem;
+    }
+    .az-btn {
+      background: var(--white); border: 1.5px solid var(--gray-border);
+      border-radius: 6px; padding: 5px 9px;
+      font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .az-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .az-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .az-btn.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+    .az-all { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .az-all:hover { background: var(--blue-mid); border-color: var(--blue-mid); }
+
+    /* ── GRUPOS / CATEGORIAS ── */
+    .group-tabs {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;
+    }
+    .group-tab {
+      background: var(--white); border: 2px solid var(--gray-border);
+      border-radius: 20px; padding: 6px 14px;
+      font-family: 'Nunito Sans', sans-serif; font-size: 13px; font-weight: 700;
+      color: var(--text-muted); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .group-tab:hover { border-color: var(--orange); color: var(--orange); }
+    .group-tab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* cabeçalho de grupo dentro do grid */
+    .group-header {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 1rem; margin-bottom: 0.25rem;
+    }
+    .group-header span {
+      font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600;
+      color: var(--blue); text-transform: uppercase; letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .group-header::after { content: ''; flex: 1; height: 1.5px; background: var(--gray-border); }
+    .group-header-icon { font-size: 16px; }
 
     /* ── GRID ── */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      gap: 10px;
-    }
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; }
 
     /* ── CARD ── */
-    .cat-card {
-      background: var(--white);
-      border: 2px solid var(--gray-border);
-      border-radius: 12px; overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
-      cursor: default;
-    }
-    .cat-card:hover {
-      border-color: var(--orange);
-      box-shadow: 0 4px 18px rgba(232,92,0,0.13);
-      transform: translateY(-2px);
-    }
+    .cat-card { background: var(--white); border: 2px solid var(--gray-border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; cursor: default; }
+    .cat-card:hover { border-color: var(--orange); box-shadow: 0 4px 18px rgba(232,92,0,0.13); transform: translateY(-2px); }
     .cat-card.hidden { display: none; }
-
     .card-header-stripe { height: 5px; background: var(--orange); flex-shrink: 0; }
-
-    .card-img-wrap {
-      width: 100%; height: 160px;
-      background: var(--blue-light);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    /* imagem preenche bem sem distorcer */
-    .card-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      padding: 6px;
-      background: var(--blue-light);
-      transition: transform 0.2s;
-    }
+    .card-img-wrap { width: 100%; height: 160px; background: var(--blue-light); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; padding: 6px; background: var(--blue-light); transition: transform 0.2s; }
     .cat-card:hover .card-img-wrap img { transform: scale(1.04); }
-    .card-img-placeholder {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 6px; width: 100%; height: 100%;
-    }
-    .card-img-placeholder svg { width: 26px; height: 26px; opacity: 0.3; color: var(--blue); }
-    .card-img-placeholder span { font-size: 11px; font-weight: 600; color: var(--text-muted); }
-
-    .card-body {
-      padding: 9px 12px 11px;
-      display: flex; align-items: center; gap: 8px;
-      border-top: 1px solid var(--gray-border);
-    }
-    .cat-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--orange); flex-shrink: 0;
-    }
+    .card-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 100%; }
+    .card-img-placeholder svg { width: 26px; height: 26px; opacity: 0.25; color: var(--blue); }
+    .card-img-placeholder span { font-size: 11px; font-weight: 600; color: var(--text-muted); font-style: italic; }
+    .card-body { padding: 9px 12px 11px; display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--gray-border); }
+    .cat-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
     .cat-name { font-size: 13px; color: var(--text); font-weight: 700; line-height: 1.3; }
 
     .no-results { text-align: center; color: var(--text-muted); font-size: 14px; padding: 3rem; display: none; }
 
     /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none; position: fixed; inset: 0; z-index: 999;
-      background: rgba(0,0,0,0.88);
-      align-items: center; justify-content: center;
-      flex-direction: column; gap: 14px; padding: 2rem;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.88); align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 2rem; }
     .lightbox.open { display: flex; }
     .lightbox img { max-width: 90vw; max-height: 78vh; border-radius: 12px; object-fit: contain; }
-    .lightbox-title {
-      color: var(--yellow); font-family: 'Oswald', sans-serif;
-      font-size: 18px; font-weight: 600; letter-spacing: 1px;
-    }
-    .lightbox-close {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      background: rgba(255,255,255,0.15); border: none; border-radius: 50%;
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; color: #fff;
-    }
+    .lightbox-title { color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 1px; }
+    .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; }
     .lightbox-close svg { width: 20px; height: 20px; }
 
     /* ── FOOTER ── */
-    .footer {
-      background: var(--blue);
-      border-top: 5px solid var(--orange);
-      padding: 2rem 1.5rem; text-align: center;
-    }
+    .footer { background: var(--blue); border-top: 5px solid var(--orange); padding: 2rem 1.5rem; text-align: center; }
     .footer-inner { max-width: 1080px; margin: 0 auto; }
-    .footer-logo {
-      font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700;
-      color: var(--yellow); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;
-    }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: var(--yellow); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem; }
     .footer-divider { width: 60px; height: 3px; background: var(--orange); margin: 0.5rem auto 0.75rem; border-radius: 2px; }
-    .footer-phones {
-      font-size: 15px; color: #fff; font-weight: 800;
-      font-family: 'Oswald', sans-serif; letter-spacing: 1px; margin-bottom: 4px;
-    }
+    .footer-phones { font-size: 15px; color: #fff; font-weight: 800; font-family: 'Oswald', sans-serif; letter-spacing: 1px; margin-bottom: 4px; }
     .footer p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 2; font-weight: 600; }
+    .footer-maps { display: inline-block; margin-top: 8px; color: var(--yellow); font-size: 13px; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(245,197,0,0.5); }
+    .footer-maps:hover { color: #fff; }
 
-    /* ── RESPONSIVO ── */
     /* ── MOBILE ── */
     @media (max-width: 700px) {
-
       .header-inner { flex-direction: column; align-items: stretch; }
-
-      .logo-block {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-        padding: 1.25rem 1rem 1.25rem;
-      }
-
+      .logo-block { flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 1.25rem 1rem; }
       .logo-area { width: 100px; height: 100px; }
-      .logo-text { margin-left: 0; }
       .logo-text h1 { font-size: 36px; letter-spacing: 3px; }
       .logo-text .subtitle { font-size: 20px; }
       .logo-text .tagline { font-size: 13px; }
-
-      .phones-block {
-        flex-direction: row; flex-wrap: wrap;
-        justify-content: center;
-        padding: 0.75rem 1rem;
-        gap: 6px 24px;
-        border-top: 2px solid rgba(255,255,255,0.2);
-      }
+      .phones-block { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 0.75rem 1rem; gap: 6px 24px; border-top: 2px solid rgba(255,255,255,0.2); }
       .phones-label { width: 100%; text-align: center; }
       .phone-item { font-size: 17px; }
-
-      /* barras sem padding-left extra no mobile */
       .address-bar { padding: 0.6rem 1rem; }
-      .address-bar span { font-size: 12.5px; text-align: center; }
+      .address-link { font-size: 12.5px; text-align: center; }
       .hours-bar { padding: 0.65rem 1rem; }
       .hours-bar-inner { flex-direction: column; gap: 4px; text-align: center; }
       .hours-sep { display: none; }
-
-
-
-      .search-wrap input { font-size: 14px; padding: 10px 14px 10px 40px; }
+      .az-bar { gap: 3px; }
+      .az-btn { padding: 4px 7px; font-size: 12px; }
       .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .card-img-wrap { height: 110px; }
       .cat-name { font-size: 12px; }
@@ -344,7 +212,6 @@
       .footer-phones { font-size: 13px; }
       .footer p { font-size: 12px; }
     }
-
     @media (max-width: 380px) {
       .logo-text h1 { font-size: 28px; }
       .logo-text .subtitle { font-size: 16px; }
@@ -357,9 +224,7 @@
   <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
-
       <div class="logo-block">
-        <!-- Logo: coloque logo.png na mesma pasta do HTML -->
         <div class="logo-area">
           <img src="logo.png" alt="Logo Fênix Auto Partes" />
         </div>
@@ -370,7 +235,6 @@
           <div class="desde">Desde 1991</div>
         </div>
       </div>
-
       <div class="phones-block">
         <div class="phones-label">Fale conosco</div>
         <div class="phone-item">
@@ -382,7 +246,6 @@
           (11) 2296-0697
         </div>
       </div>
-
     </div>
   </header>
 
@@ -390,7 +253,9 @@
   <div class="address-bar">
     <div class="address-bar-inner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <span>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP</span>
+      <a class="address-link" href="https://maps.google.com/?q=Av.+Conselheiro+Carrão,+1860,+Vila+Carrão,+São+Paulo,+SP" target="_blank" rel="noopener">
+        Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP
+      </a>
     </div>
   </div>
 
@@ -414,23 +279,28 @@
 
   <!-- MAIN -->
   <main class="main">
-    <div class="catalogo-panel" id="catalogoPanel">
-
     <div class="section-header"><h2>Catálogo de Produtos</h2></div>
 
+    <!-- BUSCA COM AUTOCOMPLETE -->
     <div class="toolbar">
       <div class="search-wrap">
         <span class="search-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </span>
-        <input type="text" id="searchInput" placeholder="Buscar produto..." oninput="filterItems()" />
+        <input type="text" id="searchInput" placeholder="Buscar produto..." autocomplete="off"
+               oninput="onSearchInput()" onkeydown="onSearchKeydown(event)" onfocus="onSearchInput()" />
+        <div class="autocomplete-list" id="autocompleteList"></div>
       </div>
     </div>
 
-    <div class="categories-grid" id="grid"></div>
-    <div class="no-results" id="noResults">Nenhum produto encontrado para essa busca.</div>
+    <!-- FILTRO POR GRUPO -->
+    <div class="group-tabs" id="groupTabs"></div>
 
-    </div><!-- fim catalogo-panel -->
+    <!-- BARRA A-Z -->
+    <div class="az-bar" id="azBar"></div>
+
+    <div class="categories-grid" id="grid"></div>
+    <div class="no-results" id="noResults">Nenhum produto encontrado.</div>
   </main>
 
   <!-- LIGHTBOX -->
@@ -449,67 +319,201 @@
       <div class="footer-divider"></div>
       <div class="footer-phones">(11) 2097-3211 &nbsp;|&nbsp; (11) 2296-0697</div>
       <p>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP<br>Seg–Sex: 08h–17h &nbsp;|&nbsp; Sáb: 08h–12h</p>
+      <a class="footer-maps" href="https://maps.google.com/?q=Av.+Conselheiro+Carrão,+1860,+Vila+Carrão,+São+Paulo,+SP" target="_blank" rel="noopener">
+        📍 Ver no Google Maps
+      </a>
     </div>
   </footer>
 
   <script>
-    var items = [
-      "Moldura de Paralama","Acabamento Interno",
-      "Aditivos","Algodão","Material de Limpeza","Amortecedor de Porta Mala","Antenas","Anti Ruído","Apliques","Aros","Assoalhos",
-      "Bagagitos","Bola de Câmbio","Borracha de Porta","Borrachas Diversas",
-      "Botões","Braços e Palhetas","Brake Light / Luz de Freio","Buzina",
-      "Cabos e Cordas","Calha de Chuva","Calotas","Canaletas","Capas de Retrovisor",
-      "Capuz","Cera e Massa de Polir","Chave de Roda","Chave de Seta","Cilindros com Chave",
-      "Cintos de Segurança","Circuito de Lâmpadas e Lanternas","Coifa de Câmbio","Cola","Comutadores",
-      "Desengripante","Difusores de Ar","Dobradiças","Dupla Face",
-      "Emblemas e Logotipos","Esguichador de Água","Estribos","Extintor",
-      "Faixas","Farol","Farol de Milha","Ferragens","Filtros",
-      "Fitas Adesivas","Folha de Porta","Forrações","Friso de Para-choque","Friso de Teto","Friso Lateral","Fusível",
-      "Grades","Grades de Para-choque","Grampos","Graxa","Guarnições",
-      "Hastes","Interruptor",
-      "Lâmpadas","Lanterna de Placa","Lanterna de Teto","Lanterna Dianteira",
-      "Lanterna Lateral","Lanterna Traseira","Lataria",
-      "Lente c/ Base de Retrovisor","Lente de Farol","Lente de Lanterna","Lente de Retrovisor",
-      "Limitadores","Lubrificantes",
-      "Macaco","Maçaneta e Fechadura","Mangueira","Manivelas","Massa de Vedação","Materiais de Limpeza",
-      "Máquina de Vidro","Máscara de Painel","Molduras Int./Ext.","Moto Bomba",
-      "Odorizante","Óleo de Freio",
-      "Painel Dianteiro","Painel Traseiro","Palhetas","Parabarro","Para-choque","Paralama",
-      "Parafusos","Pestanas","Pinos","Polainas","Porca de Estepe",
-      "Porta Objetos","Portinholas de Tanque","Portas","Protetores","Puxador",
-      "Quebra-sol","Querosene",
-      "Rack","Refletor","Regulador","Remendos Diversos",
-      "Reservatório","Retrovisor","Roldanas",
-      "Saias","Soleiras","Solventes","Spoiler","Sprays para Pintura","Sprays Diversos","Suportes","Suportes Tampão",
-      "Tampa Traseira","Tampas Diversas","Tanque","Tapetes","Telas","Terminal",
-      "Thinner","Tomada de Engate","Travas","Travessas","Triângulo","Trincos",
-      "Varetas","Vedantes","Viga de Para-choque","Volante"
+    /* ─────────────────────────────────────────
+       CATÁLOGO COM GRUPOS
+    ───────────────────────────────────────── */
+    var catalog = [
+      { group: 'Lataria',      items: [
+        'Acabamento Interno','Folha de Porta','Friso de Para-choque','Friso de Teto','Friso Lateral',
+        'Lataria','Moldura de Paralama','Para-choque','Paralama','Parabarros','Painel Dianteiro','Painel Traseiro',
+        'Portas','Saias','Viga de Para-choque'
+      ]},
+      { group: 'Vidros e Espelhos', items: [
+        'Borracha de Porta','Calhas de Chuva','Capas de Retrovisor','Lente c/ Base de Retrovisor',
+        'Lente de Retrovisor','Máquina de Vidro','Retrovisor'
+      ]},
+      { group: 'Iluminação', items: [
+        'Brake Light / Luz de Freio','Circuito de Lâmpadas e Lanternas','Farol','Farol de Milha',
+        'Lâmpadas','Lanterna de Placa','Lanterna de Teto','Lanterna Dianteira','Lanterna Lateral',
+        'Lanterna Traseira','Lente de Farol','Lente de Lanterna','Refletor'
+      ]},
+      { group: 'Elétrica', items: [
+        'Antenas','Braços e Palhetas','Buzinas','Cabos e Cordas','Chave de Seta',
+        'Cilindros com Chave','Comutadores','Esguichador de Água','Fusível',
+        'Interruptor','Maçaneta e Fechadura','Tomada de Engate'
+      ]},
+      { group: 'Suspensão e Direção', items: [
+        'Amortecedor de Porta Mala','Bagagitos','Bola de Câmbio','Coifa de Câmbio',
+        'Hastes','Limitadores','Roldanas','Travas','Travessas'
+      ]},
+      { group: 'Freios', items: [
+        'Óleo de Freio'
+      ]},
+      { group: 'Motor e Mecânica', items: [
+        'Filtros','Lubrificantes','Mangueiras','Moto Bomba','Querosene',
+        'Regulador','Reservatório','Tanque','Varetas'
+      ]},
+      { group: 'Acessórios Externos', items: [
+        'Aerofólios','Aros','Assoalhos','Calotas','Capuz','Emblemas e Logotipos',
+        'Estribos','Extintores','Porta Objetos','Portinholas de Tanque',
+        'Quebra-sol','Rack','Spoilers','Tapetes','Triângulos'
+      ]},
+      { group: 'Acessórios Internos', items: [
+        'Apliques','Botões','Canaletas','Cintos de Segurança','Difusores de Ar',
+        'Forrações','Macaco','Manivelas','Máscara de Painel','Molduras Int./Ext.',
+        'Puxador','Soleiras','Suportes','Suportes Tampão','Volante'
+      ]},
+      { group: 'Fixação e Vedação', items: [
+        'Borrachas Diversas','Chave de Roda','Cola','Dobradiças','Dupla Face',
+        'Fitas Adesivas','Grampos','Grades','Grades de Para-choque','Graxa',
+        'Guarnições','Massa de Vedação','Parafusos','Pinos','Polainas',
+        'Porca de Estepe','Protetores','Telas','Terminal','Vedantes'
+      ]},
+      { group: 'Funilaria e Pintura', items: [
+        'Cera e Massa de Polir','Faixas','Remendos Diversos','Solventes',
+        'Sprays para Pintura','Sprays Diversos','Thinner'
+      ]},
+      { group: 'Limpeza e Conservação', items: [
+        'Aditivos','Algodão','Desengripante','Material de Limpeza','Materiais de Limpeza',
+        'Odorizante'
+      ]},
+      { group: 'Outros', items: [
+        'Coifa de Câmbio','Ferragens','Pestanas','Tampa Traseira','Tampas Diversas'
+      ]}
     ];
 
-    var EXTS = ['jpg','jpeg','png','webp','gif'];
-    var grid = document.getElementById('grid');
+    /* lista plana com referência ao grupo */
+    var allItems = [];
+    catalog.forEach(function(g) {
+      g.items.forEach(function(name) {
+        allItems.push({ name: name, group: g.group });
+      });
+    });
+    /* ordena alfabeticamente dentro de cada grupo */
+    catalog.forEach(function(g) { g.items.sort(function(a,b){ return a.localeCompare(b,'pt'); }); });
 
-    items.forEach(function(name) {
+    var EXTS = ['jpg','jpeg','png','webp','gif'];
+    var activeGroup = 'Todos';
+    var activeLetter = 'Todos';
+    var activeSearch = '';
+    var acIndex = -1;
+
+    var grid       = document.getElementById('grid');
+    var noResults  = document.getElementById('noResults');
+    var acList     = document.getElementById('autocompleteList');
+    var searchInput= document.getElementById('searchInput');
+
+    /* ── GRUPOS ── */
+    var groupTabsEl = document.getElementById('groupTabs');
+    var groupNames  = ['Todos'].concat(catalog.map(function(g){ return g.group; }));
+    groupNames.forEach(function(g) {
+      var btn = document.createElement('button');
+      btn.className = 'group-tab' + (g === 'Todos' ? ' active' : '');
+      btn.textContent = g;
+      btn.onclick = function() {
+        activeGroup = g;
+        activeLetter = 'Todos';
+        activeSearch = '';
+        searchInput.value = '';
+        closeAutocomplete();
+        document.querySelectorAll('.group-tab').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        document.querySelectorAll('.az-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.querySelector('.az-btn[data-letter="Todos"]').classList.add('active');
+        renderGrid();
+      };
+      groupTabsEl.appendChild(btn);
+    });
+
+    /* ── BARRA A-Z ── */
+    var azBarEl = document.getElementById('azBar');
+    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    var usedLetters = {};
+    allItems.forEach(function(i){ usedLetters[i.name[0].toUpperCase()] = true; });
+
+    var allBtn = document.createElement('button');
+    allBtn.className = 'az-btn az-all active';
+    allBtn.textContent = 'Todos';
+    allBtn.dataset.letter = 'Todos';
+    allBtn.onclick = function() { setLetter('Todos'); };
+    azBarEl.appendChild(allBtn);
+
+    letters.forEach(function(l) {
+      var btn = document.createElement('button');
+      btn.className = 'az-btn' + (usedLetters[l] ? '' : ' disabled');
+      btn.textContent = l;
+      btn.dataset.letter = l;
+      btn.onclick = function() { if (usedLetters[l]) setLetter(l); };
+      azBarEl.appendChild(btn);
+    });
+
+    function setLetter(l) {
+      activeLetter = l;
+      activeSearch = '';
+      searchInput.value = '';
+      closeAutocomplete();
+      document.querySelectorAll('.az-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelector('.az-btn[data-letter="' + l + '"]').classList.add('active');
+      renderGrid();
+    }
+
+    /* ── RENDER GRID ── */
+    function renderGrid() {
+      grid.innerHTML = '';
+      var total = 0;
+
+      catalog.forEach(function(g) {
+        if (activeGroup !== 'Todos' && activeGroup !== g.group) return;
+
+        var filtered = g.items.filter(function(name) {
+          var matchLetter = activeLetter === 'Todos' || name[0].toUpperCase() === activeLetter;
+          var matchSearch = !activeSearch || name.toLowerCase().includes(activeSearch.toLowerCase());
+          return matchLetter && matchSearch;
+        });
+
+        if (filtered.length === 0) return;
+
+        /* cabeçalho do grupo (só quando mostrando todos os grupos) */
+        if (activeGroup === 'Todos') {
+          var gh = document.createElement('div');
+          gh.className = 'group-header';
+          gh.innerHTML = '<span>' + g.group + '</span>';
+          grid.appendChild(gh);
+        }
+
+        filtered.forEach(function(name) {
+          grid.appendChild(buildCard(name));
+          total++;
+        });
+      });
+
+      noResults.style.display = total === 0 ? 'block' : 'none';
+    }
+
+    function buildCard(name) {
       var card = document.createElement('div');
       card.className = 'cat-card';
       card.dataset.name = name.toLowerCase();
 
-      /* faixa laranja no topo do card */
       var stripe = document.createElement('div');
       stripe.className = 'card-header-stripe';
       card.appendChild(stripe);
 
-      /* área da imagem */
       var imgWrap = document.createElement('div');
       imgWrap.className = 'card-img-wrap';
 
-      /* placeholder enquanto não há foto */
       var ph = document.createElement('div');
       ph.className = 'card-img-placeholder';
-      ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Sem foto</span>';
+      ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto em breve</span>';
       imgWrap.appendChild(ph);
 
-      /* tenta carregar imagem pelo nome da categoria */
       (function(imgWrapEl, placeholderEl, itemName) {
         var idx = 0;
         function tryNext() {
@@ -518,20 +522,13 @@
           img.onload = function() {
             placeholderEl.style.display = 'none';
             var imgEl = document.createElement('img');
-            imgEl.src = img.src;
-            imgEl.alt = itemName;
+            imgEl.src = img.src; imgEl.alt = itemName;
             imgEl.onclick = function() { openLightbox(img.src, itemName); };
-            /* ajusta encaixe conforme proporção da imagem */
             var ratio = img.naturalWidth / img.naturalHeight;
-            if (ratio > 1.4) {
-              imgEl.style.objectFit = 'cover';
-              imgEl.style.padding = '0';
-            } else if (ratio < 0.75) {
-              imgEl.style.objectFit = 'contain';
-              imgEl.style.padding = '8px';
+            if (ratio > 1.4 || (ratio >= 0.75 && ratio <= 1.4)) {
+              imgEl.style.objectFit = 'cover'; imgEl.style.padding = '0';
             } else {
-              imgEl.style.objectFit = 'cover';
-              imgEl.style.padding = '0';
+              imgEl.style.objectFit = 'contain'; imgEl.style.padding = '8px';
             }
             imgWrapEl.insertBefore(imgEl, imgWrapEl.firstChild);
           };
@@ -543,34 +540,69 @@
 
       card.appendChild(imgWrap);
 
-      /* nome do produto */
       var body = document.createElement('div');
       body.className = 'card-body';
-      var dot = document.createElement('div');
-      dot.className = 'cat-dot';
-      var nameEl = document.createElement('span');
-      nameEl.className = 'cat-name';
-      nameEl.textContent = name;
-      body.appendChild(dot);
-      body.appendChild(nameEl);
+      var dot = document.createElement('div'); dot.className = 'cat-dot';
+      var nameEl = document.createElement('span'); nameEl.className = 'cat-name'; nameEl.textContent = name;
+      body.appendChild(dot); body.appendChild(nameEl);
       card.appendChild(body);
-
-      grid.appendChild(card);
-    });
-
-
-    /* ── BUSCA ── */
-    function filterItems() {
-      var q = document.getElementById('searchInput').value.toLowerCase().trim();
-      var cards = grid.querySelectorAll('.cat-card');
-      var count = 0;
-      cards.forEach(function(c) {
-        var match = !q || c.dataset.name.includes(q);
-        c.classList.toggle('hidden', !match);
-        if (match) count++;
-      });
-      document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+      return card;
     }
+
+    /* ── AUTOCOMPLETE ── */
+    function onSearchInput() {
+      var q = searchInput.value.trim();
+      activeSearch = q;
+      acIndex = -1;
+
+      if (q.length < 1) { closeAutocomplete(); renderGrid(); return; }
+
+      var matches = allItems
+        .filter(function(i){ return i.name.toLowerCase().includes(q.toLowerCase()); })
+        .slice(0, 8);
+
+      if (matches.length === 0) { closeAutocomplete(); renderGrid(); return; }
+
+      acList.innerHTML = '';
+      matches.forEach(function(item, idx2) {
+        var div = document.createElement('div');
+        div.className = 'autocomplete-item';
+        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+        div.innerHTML = item.name.replace(re, '<mark>$1</mark>') +
+          '<span style="font-size:11px;color:var(--text-muted);margin-left:8px;">' + item.group + '</span>';
+        div.onclick = function() {
+          searchInput.value = item.name;
+          activeSearch = item.name;
+          closeAutocomplete();
+          renderGrid();
+        };
+        acList.appendChild(div);
+      });
+      acList.classList.add('open');
+      renderGrid();
+    }
+
+    function onSearchKeydown(e) {
+      var items2 = acList.querySelectorAll('.autocomplete-item');
+      if (e.key === 'ArrowDown') { acIndex = Math.min(acIndex+1, items2.length-1); highlightAC(items2); e.preventDefault(); }
+      else if (e.key === 'ArrowUp') { acIndex = Math.max(acIndex-1, -1); highlightAC(items2); e.preventDefault(); }
+      else if (e.key === 'Enter') {
+        if (acIndex >= 0 && items2[acIndex]) { items2[acIndex].click(); }
+        else { closeAutocomplete(); renderGrid(); }
+      }
+      else if (e.key === 'Escape') { closeAutocomplete(); }
+    }
+
+    function highlightAC(items2) {
+      items2.forEach(function(it, i){ it.classList.toggle('active', i === acIndex); });
+      if (acIndex >= 0 && items2[acIndex]) searchInput.value = items2[acIndex].textContent.split('\n')[0].trim();
+    }
+
+    function closeAutocomplete() { acList.classList.remove('open'); acList.innerHTML = ''; acIndex = -1; }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-wrap')) closeAutocomplete();
+    });
 
     /* ── LIGHTBOX ── */
     function openLightbox(src, title) {
@@ -578,13 +610,11 @@
       document.getElementById('lightboxTitle').textContent = title;
       document.getElementById('lightbox').classList.add('open');
     }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-    }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
+    /* ── INIT ── */
+    renderGrid();
+  </script>
 </body>
 </html>
