@@ -120,34 +120,6 @@
     .az-all { background: var(--blue); border-color: var(--blue); color: #fff; }
     .az-all:hover { background: var(--blue-mid); border-color: var(--blue-mid); }
 
-    /* ── GRUPOS / CATEGORIAS ── */
-    .group-tabs {
-      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem;
-    }
-    .group-tab {
-      background: var(--white); border: 2px solid var(--gray-border);
-      border-radius: 20px; padding: 6px 14px;
-      font-family: 'Nunito Sans', sans-serif; font-size: 13px; font-weight: 700;
-      color: var(--text-muted); cursor: pointer;
-      transition: all 0.15s;
-    }
-    .group-tab:hover { border-color: var(--orange); color: var(--orange); }
-    .group-tab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
-
-    /* cabeçalho de grupo dentro do grid */
-    .group-header {
-      grid-column: 1 / -1;
-      display: flex; align-items: center; gap: 10px;
-      margin-top: 1rem; margin-bottom: 0.25rem;
-    }
-    .group-header span {
-      font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600;
-      color: var(--blue); text-transform: uppercase; letter-spacing: 1px;
-      white-space: nowrap;
-    }
-    .group-header::after { content: ''; flex: 1; height: 1.5px; background: var(--gray-border); }
-    .group-header-icon { font-size: 16px; }
-
     /* ── GRID ── */
     .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; }
 
@@ -293,9 +265,6 @@
       </div>
     </div>
 
-    <!-- FILTRO POR GRUPO -->
-    <div class="group-tabs" id="groupTabs"></div>
-
     <!-- BARRA A-Z -->
     <div class="az-bar" id="azBar"></div>
 
@@ -326,81 +295,35 @@
   </footer>
 
   <script>
-    /* ─────────────────────────────────────────
-       CATÁLOGO COM GRUPOS
-    ───────────────────────────────────────── */
-    var catalog = [
-      { group: 'Lataria',      items: [
-        'Acabamento Interno','Folha de Porta','Friso de Para-choque','Friso de Teto','Friso Lateral',
-        'Lataria','Moldura de Paralama','Para-choque','Paralama','Parabarros','Painel Dianteiro','Painel Traseiro',
-        'Portas','Saias','Viga de Para-choque'
-      ]},
-      { group: 'Vidros e Espelhos', items: [
-        'Borracha de Porta','Calhas de Chuva','Capas de Retrovisor','Lente c/ Base de Retrovisor',
-        'Lente de Retrovisor','Máquina de Vidro','Retrovisor'
-      ]},
-      { group: 'Iluminação', items: [
-        'Brake Light / Luz de Freio','Circuito de Lâmpadas e Lanternas','Farol','Farol de Milha',
-        'Lâmpadas','Lanterna de Placa','Lanterna de Teto','Lanterna Dianteira','Lanterna Lateral',
-        'Lanterna Traseira','Lente de Farol','Lente de Lanterna','Refletor'
-      ]},
-      { group: 'Elétrica', items: [
-        'Antenas','Buzinas','Cabos e Cordas','Chave de Seta',
-        'Cilindros com Chave','Comutadores','Esguichador de Água','Fusível',
-        'Interruptor','Maçaneta e Fechadura','Tomada de Engate'
-      ]},
-      { group: 'Suspensão e Direção', items: [
-        'Amortecedor de Porta Mala','Bagagitos','Bola de Câmbio','Coifa de Câmbio',
-        'Hastes','Limitadores','Roldanas','Travas','Travessas'
-      ]},
-      { group: 'Freios', items: [
-        'Óleo de Freio'
-      ]},
-      { group: 'Motor e Mecânica', items: [
-        'Filtros','Lubrificantes','Mangueiras','Moto Bomba','Querosene',
-        'Regulador','Reservatório','Tanque','Varetas'
-      ]},
-      { group: 'Acessórios Externos', items: [
-        'Aerofólios','Aros','Assoalhos','Braços e Palhetas','Calotas','Capuz','Emblemas e Logotipos',
-        'Estribos','Extintores','Porta Objetos','Portinholas de Tanque',
-        'Quebra-sol','Rack','Spoilers','Tapetes','Triângulos'
-      ]},
-      { group: 'Acessórios Internos', items: [
-        'Apliques','Botões','Canaletas','Cintos de Segurança','Difusores de Ar',
-        'Forrações','Macaco','Manivelas','Máscara de Painel','Molduras Int./Ext.',
-        'Puxador','Soleiras','Suportes','Suportes Tampão','Volante'
-      ]},
-      { group: 'Fixação e Vedação', items: [
-        'Borrachas Diversas','Chave de Roda','Cola','Dobradiças','Dupla Face',
-        'Fitas Adesivas','Grampos','Grades','Grades de Para-choque','Graxa',
-        'Guarnições','Massa de Vedação','Parafusos','Pinos','Polainas',
-        'Porca de Estepe','Protetores','Telas','Terminal','Vedantes'
-      ]},
-      { group: 'Funilaria e Pintura', items: [
-        'Cera e Massa de Polir','Faixas','Remendos Diversos','Solventes',
-        'Sprays para Pintura','Sprays Diversos','Thinner'
-      ]},
-      { group: 'Limpeza e Conservação', items: [
-        'Aditivos','Algodão','Desengripante','Material de Limpeza','Materiais de Limpeza',
-        'Odorizante'
-      ]},
-      { group: 'Outros', items: [
-        'Coifa de Câmbio','Ferragens','Pestanas','Tampa Traseira','Tampas Diversas'
-      ]}
+    var items = [
+      'Acabamento Interno','Aditivos','Aerofólios','Algodão','Amortecedor de Porta Mala','Anti Ruído','Antenas',
+      'Apliques','Aros','Assoalhos','Bagagitos','Bola de Câmbio','Borracha de Porta','Borrachas Diversas',
+      'Botões','Braços e Palhetas','Brake Light / Luz de Freio','Buzinas','Cabos e Cordas','Calhas de Chuva',
+      'Calotas','Canaletas','Capas de Retrovisor','Capuz','Cera e Massa de Polir','Chave de Roda',
+      'Chave de Seta','Cilindros com Chave','Cintos de Segurança','Circuito de Lâmpadas e Lanternas',
+      'Coifa de Câmbio','Cola','Comutadores','Desengripante','Difusores de Ar','Dobradiças','Dupla Face',
+      'Emblemas e Logotipos','Esguichador de Água','Estribos','Extintores','Faixas','Farol','Farol de Milha',
+      'Ferragens','Filtros','Fitas Adesivas','Folha de Porta','Forrações','Friso de Para-choque',
+      'Friso de Teto','Friso Lateral','Fusível','Grades','Grades de Para-choque','Grampos','Graxa',
+      'Guarnições','Hastes','Interruptor','Lâmpadas','Lanterna de Placa','Lanterna de Teto',
+      'Lanterna Dianteira','Lanterna Lateral','Lanterna Traseira','Lataria',
+      'Lente c/ Base de Retrovisor','Lente de Farol','Lente de Lanterna','Lente de Retrovisor',
+      'Limitadores','Lubrificantes','Macaco','Maçaneta e Fechadura','Mangueiras','Manivelas',
+      'Massa de Vedação','Material de Limpeza','Materiais de Limpeza','Máquina de Vidro',
+      'Máscara de Painel','Moldura de Paralama','Molduras Int./Ext.','Moto Bomba','Odorizante',
+      'Óleo de Freio','Painel Dianteiro','Painel Traseiro','Palhetas','Para-choque','Parabarros',
+      'Paralama','Parafusos','Pestanas','Pinos','Polainas','Porca de Estepe','Porta Objetos',
+      'Portinholas de Tanque','Portas','Protetores','Puxador','Quebra-sol','Querosene','Rack',
+      'Refletor','Regulador','Remendos Diversos','Reservatório','Retrovisor','Roldanas','Saias',
+      'Soleiras','Solventes','Spoilers','Sprays Diversos','Sprays para Pintura','Suportes',
+      'Suportes Tampão','Tampa Traseira','Tampas Diversas','Tanque','Tapetes','Telas','Terminal',
+      'Thinner','Tomada de Engate','Travas','Travessas','Triângulos','Trincos','Varetas',
+      'Vedantes','Viga de Para-choque','Volante'
     ];
 
-    /* lista plana com referência ao grupo */
-    var allItems = [];
-    catalog.forEach(function(g) {
-      g.items.forEach(function(name) {
-        allItems.push({ name: name, group: g.group });
-      });
-    });
-    /* ordena alfabeticamente dentro de cada grupo */
-    catalog.forEach(function(g) { g.items.sort(function(a,b){ return a.localeCompare(b,'pt'); }); });
+    items.sort(function(a,b){ return a.localeCompare(b,'pt'); });
 
     var EXTS = ['jpg','jpeg','png','webp','gif'];
-    var activeGroup = 'Todos';
     var activeLetter = 'Todos';
     var activeSearch = '';
     var acIndex = -1;
@@ -410,33 +333,11 @@
     var acList     = document.getElementById('autocompleteList');
     var searchInput= document.getElementById('searchInput');
 
-    /* ── GRUPOS ── */
-    var groupTabsEl = document.getElementById('groupTabs');
-    var groupNames  = ['Todos'].concat(catalog.map(function(g){ return g.group; }));
-    groupNames.forEach(function(g) {
-      var btn = document.createElement('button');
-      btn.className = 'group-tab' + (g === 'Todos' ? ' active' : '');
-      btn.textContent = g;
-      btn.onclick = function() {
-        activeGroup = g;
-        activeLetter = 'Todos';
-        activeSearch = '';
-        searchInput.value = '';
-        closeAutocomplete();
-        document.querySelectorAll('.group-tab').forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        document.querySelectorAll('.az-btn').forEach(function(b){ b.classList.remove('active'); });
-        document.querySelector('.az-btn[data-letter="Todos"]').classList.add('active');
-        renderGrid();
-      };
-      groupTabsEl.appendChild(btn);
-    });
-
     /* ── BARRA A-Z ── */
     var azBarEl = document.getElementById('azBar');
     var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     var usedLetters = {};
-    allItems.forEach(function(i){ usedLetters[i.name[0].toUpperCase()] = true; });
+    items.forEach(function(n){ usedLetters[n[0].toUpperCase()] = true; });
 
     var allBtn = document.createElement('button');
     allBtn.className = 'az-btn az-all active';
@@ -468,32 +369,13 @@
     function renderGrid() {
       grid.innerHTML = '';
       var total = 0;
-
-      catalog.forEach(function(g) {
-        if (activeGroup !== 'Todos' && activeGroup !== g.group) return;
-
-        var filtered = g.items.filter(function(name) {
-          var matchLetter = activeLetter === 'Todos' || name[0].toUpperCase() === activeLetter;
-          var matchSearch = !activeSearch || name.toLowerCase().includes(activeSearch.toLowerCase());
-          return matchLetter && matchSearch;
-        });
-
-        if (filtered.length === 0) return;
-
-        /* cabeçalho do grupo (só quando mostrando todos os grupos) */
-        if (activeGroup === 'Todos') {
-          var gh = document.createElement('div');
-          gh.className = 'group-header';
-          gh.innerHTML = '<span>' + g.group + '</span>';
-          grid.appendChild(gh);
-        }
-
-        filtered.forEach(function(name) {
-          grid.appendChild(buildCard(name));
-          total++;
-        });
+      items.forEach(function(name) {
+        var matchLetter = activeLetter === 'Todos' || name[0].toUpperCase() === activeLetter;
+        var matchSearch = !activeSearch || name.toLowerCase().includes(activeSearch.toLowerCase());
+        if (!matchLetter || !matchSearch) return;
+        grid.appendChild(buildCard(name));
+        total++;
       });
-
       noResults.style.display = total === 0 ? 'block' : 'none';
     }
 
@@ -525,10 +407,10 @@
             imgEl.src = img.src; imgEl.alt = itemName;
             imgEl.onclick = function() { openLightbox(img.src, itemName); };
             var ratio = img.naturalWidth / img.naturalHeight;
-            if (ratio > 1.4 || (ratio >= 0.75 && ratio <= 1.4)) {
-              imgEl.style.objectFit = 'cover'; imgEl.style.padding = '0';
-            } else {
+            if (ratio < 0.75) {
               imgEl.style.objectFit = 'contain'; imgEl.style.padding = '8px';
+            } else {
+              imgEl.style.objectFit = 'cover'; imgEl.style.padding = '0';
             }
             imgWrapEl.insertBefore(imgEl, imgWrapEl.firstChild);
           };
@@ -557,22 +439,21 @@
 
       if (q.length < 1) { closeAutocomplete(); renderGrid(); return; }
 
-      var matches = allItems
-        .filter(function(i){ return i.name.toLowerCase().includes(q.toLowerCase()); })
+      var matches = items
+        .filter(function(n){ return n.toLowerCase().includes(q.toLowerCase()); })
         .slice(0, 8);
 
       if (matches.length === 0) { closeAutocomplete(); renderGrid(); return; }
 
       acList.innerHTML = '';
-      matches.forEach(function(item, idx2) {
+      matches.forEach(function(name) {
         var div = document.createElement('div');
         div.className = 'autocomplete-item';
-        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
-        div.innerHTML = item.name.replace(re, '<mark>$1</mark>') +
-          '<span style="font-size:11px;color:var(--text-muted);margin-left:8px;">' + item.group + '</span>';
+        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\$&') + ')', 'gi');
+        div.innerHTML = name.replace(re, '<mark>$1</mark>');
         div.onclick = function() {
-          searchInput.value = item.name;
-          activeSearch = item.name;
+          searchInput.value = name;
+          activeSearch = name;
           closeAutocomplete();
           renderGrid();
         };
@@ -595,7 +476,7 @@
 
     function highlightAC(items2) {
       items2.forEach(function(it, i){ it.classList.toggle('active', i === acIndex); });
-      if (acIndex >= 0 && items2[acIndex]) searchInput.value = items2[acIndex].textContent.split('\n')[0].trim();
+      if (acIndex >= 0 && items2[acIndex]) searchInput.value = items2[acIndex].textContent.trim();
     }
 
     function closeAutocomplete() { acList.classList.remove('open'); acList.innerHTML = ''; acIndex = -1; }
