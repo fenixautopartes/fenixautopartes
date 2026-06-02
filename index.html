@@ -38,7 +38,18 @@
     .logo-text .desde { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
     .phones-block { background: var(--orange); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 2.5rem; gap: 8px; }
     .phones-label { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.85); letter-spacing: 2px; text-transform: uppercase; }
-    .phone-item { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 22px; font-weight: 800; font-family: 'Oswald', sans-serif; letter-spacing: 0.5px; }
+    .phone-item {
+      display: flex; align-items: center; gap: 8px;
+      color: #fff; font-size: 22px; font-weight: 800;
+      font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      padding: 5px 14px 5px 10px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .phone-item:hover, .phone-item:active { background: rgba(255,255,255,0.28); border-color: #fff; }
     .phone-item svg { width: 18px; height: 18px; opacity: 0.85; }
 
     /* ── ADDRESS BAR ── */
@@ -58,8 +69,8 @@
     .hours-sep { color: var(--text-muted); font-size: 13px; }
 
     /* ── FACHADA ── */
-    .fachada-wrap { width: 100%; background: var(--blue-mid); line-height: 0; }
-    .fachada-img { width: 100%; height: auto; display: block; object-fit: contain; }
+    .fachada-wrap { width: 100%; max-height: 340px; overflow: hidden; background: var(--blue-mid); line-height: 0; }
+    .fachada-img { width: 100%; height: 340px; object-fit: cover; object-position: center 30%; display: block; }
 
     /* ── MAIN ── */
     .main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
@@ -235,14 +246,14 @@
       </div>
       <div class="phones-block">
         <div class="phones-label">Fale conosco</div>
-        <div class="phone-item">
+        <a class="phone-item" href="tel:+551120973211">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           (11) 2097-3211
-        </div>
-        <div class="phone-item">
+        </a>
+        <a class="phone-item" href="tel:+551122960697">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           (11) 2296-0697
-        </div>
+        </a>
       </div>
     </div>
   </header>
@@ -317,7 +328,11 @@
     <div class="footer-inner">
       <div class="footer-logo">Fênix Auto Partes</div>
       <div class="footer-divider"></div>
-      <div class="footer-phones">(11) 2097-3211 &nbsp;|&nbsp; (11) 2296-0697</div>
+      <div class="footer-phones">
+        <a href="tel:+551120973211" style="color:#fff;text-decoration:none;">(11) 2097-3211</a>
+        &nbsp;|&nbsp;
+        <a href="tel:+551122960697" style="color:#fff;text-decoration:none;">(11) 2296-0697</a>
+      </div>
       <p>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP<br>Seg–Sex: 08h–17h &nbsp;|&nbsp; Sáb: 08h–12h</p>
       <a class="footer-maps" href="https://maps.google.com/?q=Av.+Conselheiro+Carrão,+1860,+Vila+Carrão,+São+Paulo,+SP" target="_blank" rel="noopener">
         📍 Ver no Google Maps
