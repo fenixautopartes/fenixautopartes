@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fênix Auto Partes — Latarias e Acessórios Automotivos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:       #E85C00;
+      --orange-mid:   #FF7A1A;
+      --orange-light: #FFF0E6;
+      --blue:         #002B8A;
+      --blue-mid:     #003DA6;
+      --blue-light:   #E6EBF8;
+      --yellow:       #F5C500;
+      --white:        #FFFFFF;
+      --gray-bg:      #F5F2EE;
+      --gray-border:  #E0D8CF;
+      --text:         #1A1208;
+      --text-muted:   #7A6A55;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito Sans', sans-serif; background: var(--gray-bg); color: var(--text); min-height: 100vh; }
+
+    /* ── HEADER ── */
+    .header { background: var(--blue); border-bottom: 5px solid var(--orange); }
+    .header-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: stretch; justify-content: space-between; flex-wrap: wrap; }
+    .logo-block { display: flex; align-items: center; gap: 22px; padding: 1.4rem 1.5rem; flex: 1; }
+    .logo-area { width: 150px; height: 150px; flex-shrink: 0; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+    .logo-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .logo-text h1 { font-family: 'Playfair Display', serif; font-size: 58px; font-weight: 900; color: #fff; letter-spacing: 6px; line-height: 1; text-transform: uppercase; }
+    .logo-text .subtitle { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 4px; text-transform: uppercase; margin-top: 2px; }
+    .logo-text .tagline { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; color: var(--yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; }
+    .logo-text .desde { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: 3px; text-transform: uppercase; margin-top: 5px; }
+    .phones-block { background: var(--orange); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 2.5rem; gap: 8px; }
+    .phones-label { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.85); letter-spacing: 2px; text-transform: uppercase; }
+    .phone-item {
+      display: flex; align-items: center; gap: 8px;
+      color: #fff; font-size: 22px; font-weight: 800;
+      font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      padding: 5px 14px 5px 10px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .phone-item:hover, .phone-item:active { background: rgba(255,255,255,0.28); border-color: #fff; }
+    .phone-item svg { width: 18px; height: 18px; opacity: 0.85; }
+
+    /* ── ADDRESS BAR ── */
+    .address-bar { background: var(--blue-mid); padding: 0.6rem 1.5rem; border-bottom: 2px solid var(--yellow); }
+    .address-bar-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .address-bar svg { width: 15px; height: 15px; color: var(--yellow); flex-shrink: 0; }
+    .address-link { font-size: 13.5px; color: #fff; font-weight: 800; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.4); transition: border-color 0.15s; }
+    .address-link:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── HOURS BAR ── */
+    .hours-bar { background: var(--orange-light); border-bottom: 3px solid var(--orange); padding: 0.65rem 1.5rem; }
+    .hours-bar-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem 2rem; }
+    .hours-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); display: flex; align-items: center; gap: 6px; }
+    .hours-label svg { width: 14px; height: 14px; }
+    .hours-item { font-size: 13px; color: var(--text); font-weight: 700; }
+    .hours-item strong { color: var(--orange); }
+    .hours-sep { color: var(--text-muted); font-size: 13px; }
+
+    /* ── FACHADA ── */
+    .fachada-wrap { width: 100%; background: var(--gray-bg); line-height: 0; }
+    .fachada-img { width: 100%; height: auto; display: block; max-height: 500px; object-fit: contain; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.5rem; }
+    .section-header::before { content: ''; width: 5px; height: 24px; background: var(--orange); border-radius: 3px; flex-shrink: 0; }
+    .section-header::after { content: ''; flex: 1; height: 2px; background: var(--gray-border); }
+    .section-header h2 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; color: var(--blue); white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── TOOLBAR ── */
+    .toolbar { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; }
+
+    /* busca com autocomplete */
+    .search-wrap { position: relative; flex: 1; min-width: 220px; }
+    .search-wrap input {
+      width: 100%; background: var(--white);
+      border: 2px solid var(--gray-border); border-radius: 10px;
+      color: var(--text); font-family: 'Nunito Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      padding: 11px 16px 11px 44px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-wrap input::placeholder { color: var(--text-muted); font-weight: 400; }
+    .search-wrap input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,92,0,0.12); }
+    .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+    .search-icon svg { width: 18px; height: 18px; display: block; }
+
+    /* dropdown autocomplete */
+    .autocomplete-list {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: var(--white); border: 2px solid var(--orange);
+      border-radius: 10px; z-index: 100; max-height: 220px; overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12); display: none;
+    }
+    .autocomplete-list.open { display: block; }
+    .autocomplete-item {
+      padding: 10px 16px; font-size: 14px; font-weight: 600;
+      color: var(--text); cursor: pointer; border-bottom: 1px solid var(--gray-border);
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover, .autocomplete-item.active { background: var(--orange-light); color: var(--orange); }
+    .autocomplete-item mark { background: none; color: var(--orange); font-weight: 800; }
+
+    /* ── BARRA A-Z ── */
+    /* ── CATÁLOGO COM SCROLL INTERNO ── */
+    .catalog-container {
+      border: 2px solid var(--gray-border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .catalog-controls {
+      padding: 1rem 1rem 0.75rem;
+      background: var(--white);
+      border-bottom: 2px solid var(--gray-border);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .catalog-scroll {
+      height: 82vh;
+      overflow-y: auto;
+      padding: 1.25rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--orange) var(--blue-light);
+    }
+    .catalog-scroll::-webkit-scrollbar { width: 7px; }
+    .catalog-scroll::-webkit-scrollbar-track { background: var(--blue-light); }
+    .catalog-scroll::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
+
+    /* ── AZ-BAR ── */
+    .az-bar {
+      display: flex; flex-wrap: wrap; gap: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .az-btn {
+      background: var(--white); border: 1.5px solid var(--gray-border);
+      border-radius: 6px; padding: 5px 9px;
+      font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .az-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .az-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .az-btn.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+    .az-all { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .az-all:hover { background: var(--blue-mid); border-color: var(--blue-mid); }
+
+    /* ── GRID ── */
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+
+    /* ── CARD ── */
+    .cat-card { background: var(--white); border: 2px solid var(--gray-border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; cursor: default; }
+    .cat-card:hover { border-color: var(--orange); box-shadow: 0 4px 18px rgba(232,92,0,0.13); transform: translateY(-2px); }
+    .cat-card.hidden { display: none; }
+    .card-header-stripe { height: 5px; background: var(--orange); flex-shrink: 0; }
+    .card-img-wrap { width: 100%; height: 200px; background: var(--blue-light); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; padding: 6px; background: var(--blue-light); transition: transform 0.2s; }
+    .cat-card:hover .card-img-wrap img { transform: scale(1.04); }
+    .card-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 100%; }
+    .card-img-placeholder svg { width: 26px; height: 26px; opacity: 0.25; color: var(--blue); }
+    .card-img-placeholder span { font-size: 11px; font-weight: 600; color: var(--text-muted); font-style: italic; }
+    .card-body { padding: 9px 12px 11px; display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--gray-border); }
+    .cat-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .cat-name { font-size: 13px; color: var(--text); font-weight: 700; line-height: 1.3; }
+
+    .no-results { text-align: center; color: var(--text-muted); font-size: 14px; padding: 3rem; display: none; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.88); align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 2rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 78vh; border-radius: 12px; object-fit: contain; }
+    .lightbox-title { color: var(--yellow); font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 1px; }
+    .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; }
+    .lightbox-close svg { width: 20px; height: 20px; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--blue); border-top: 5px solid var(--orange); padding: 2rem 1.5rem; text-align: center; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: var(--yellow); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .footer-divider { width: 60px; height: 3px; background: var(--orange); margin: 0.5rem auto 0.75rem; border-radius: 2px; }
+    .footer-phones { font-size: 15px; color: #fff; font-weight: 800; font-family: 'Oswald', sans-serif; letter-spacing: 1px; margin-bottom: 4px; }
+    .footer p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 2; font-weight: 600; }
+    .footer-maps { display: inline-block; margin-top: 8px; color: var(--yellow); font-size: 13px; font-weight: 700; text-decoration: none; border-bottom: 1px dashed rgba(245,197,0,0.5); }
+    .footer-maps:hover { color: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      .header-inner { flex-direction: column; align-items: stretch; }
+      .logo-block { flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 1.25rem 1rem; }
+      .logo-area { width: 100px; height: 100px; }
+      .logo-text h1 { font-size: 36px; letter-spacing: 3px; }
+      .logo-text .subtitle { font-size: 20px; }
+      .logo-text .tagline { font-size: 13px; }
+      .phones-block { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 0.75rem 1rem; gap: 6px 24px; border-top: 2px solid rgba(255,255,255,0.2); }
+      .phones-label { width: 100%; text-align: center; }
+      .phone-item { font-size: 17px; }
+      .address-bar { padding: 0.6rem 1rem; }
+      .address-link { font-size: 12.5px; text-align: center; }
+      .hours-bar { padding: 0.65rem 1rem; }
+      .hours-bar-inner { flex-direction: column; gap: 4px; text-align: center; }
+      .hours-sep { display: none; }
+      .az-bar { gap: 3px; }
+      .az-btn { padding: 4px 7px; font-size: 12px; }
+      .catalog-scroll { height: 60vh; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .card-img-wrap { height: 140px; }
+      .cat-name { font-size: 12px; }
+      .section-header h2 { font-size: 18px; }
+      .footer-logo { font-size: 20px; }
+      .footer-phones { font-size: 13px; }
+      .footer p { font-size: 12px; }
+    }
+    @media (max-width: 380px) {
+      .logo-text h1 { font-size: 28px; }
+      .logo-text .subtitle { font-size: 16px; }
+      .phone-item { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-block">
+        <div class="logo-area">
+          <img src="logo.png" alt="Logo Fênix Auto Partes" />
+        </div>
+        <div class="logo-text">
+          <h1>Fênix</h1>
+          <div class="subtitle">Auto Partes</div>
+          <div class="tagline">Latarias e Acessórios Automotivos</div>
+          <div class="desde">Desde 1991</div>
+        </div>
+      </div>
+      <div class="phones-block">
+        <div class="phones-label">Fale conosco</div>
+        <a class="phone-item" href="tel:+551120973211">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (11) 2097-3211
+        </a>
+        <a class="phone-item" href="tel:+551122960697">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 2a2 2 0 012-2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (11) 2296-0697
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ADDRESS BAR -->
+  <div class="address-bar">
+    <div class="address-bar-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <a class="address-link" href="https://maps.google.com/?q=Av.+Conselheiro+Carrão,+1860,+Vila+Carrão,+São+Paulo,+SP" target="_blank" rel="noopener">
+        Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP
+      </a>
+    </div>
+  </div>
+
+  <!-- HOURS BAR -->
+  <div class="hours-bar">
+    <div class="hours-bar-inner">
+      <div class="hours-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Horário de Funcionamento
+      </div>
+      <div class="hours-item"><strong>Seg – Sex</strong>&nbsp; 08h às 17h</div>
+      <span class="hours-sep">|</span>
+      <div class="hours-item"><strong>Sábado</strong>&nbsp; 08h às 12h</div>
+    </div>
+  </div>
+
+  <!-- BANNER FACHADA -->
+  <div class="fachada-wrap">
+    <img src="fachada.jpg" alt="Fachada Fênix Auto Partes" class="fachada-img" />
+  </div>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="section-header"><h2>Catálogo de Produtos</h2></div>
+
+    <div class="catalog-container">
+      <!-- CONTROLES FIXOS: busca + A-Z -->
+      <div class="catalog-controls">
+        <div class="toolbar">
+          <div class="search-wrap">
+            <span class="search-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <input type="text" id="searchInput" placeholder="Buscar produto..." autocomplete="off"
+                   oninput="onSearchInput()" onkeydown="onSearchKeydown(event)" onfocus="onSearchInput()" />
+            <div class="autocomplete-list" id="autocompleteList"></div>
+          </div>
+        </div>
+        <div class="az-bar" id="azBar"></div>
+      </div>
+
+      <!-- ÁREA COM SCROLL -->
+      <div class="catalog-scroll">
+        <div class="categories-grid" id="grid"></div>
+        <div class="no-results" id="noResults">Nenhum produto encontrado.</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Fênix Auto Partes</div>
+      <div class="footer-divider"></div>
+      <div class="footer-phones">
+        <a href="tel:+551120973211" style="color:#fff;text-decoration:none;">(11) 2097-3211</a>
+        &nbsp;|&nbsp;
+        <a href="tel:+551122960697" style="color:#fff;text-decoration:none;">(11) 2296-0697</a>
+      </div>
+      <p>Av. Conselheiro Carrão, 1860 - Vila Carrão, São Paulo - SP<br>Seg–Sex: 08h–17h &nbsp;|&nbsp; Sáb: 08h–12h</p>
+      <a class="footer-maps" href="https://maps.google.com/?q=Av.+Conselheiro+Carrão,+1860,+Vila+Carrão,+São+Paulo,+SP" target="_blank" rel="noopener">
+        📍 Ver no Google Maps
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    /* cada item: { label: nome exibido, file: nome do arquivo } */
+    var items = [
+      {label:'Acabamento Interno',         file:'Acabamento Interno'},
+      {label:'Aditivos',                   file:'Aditivos'},
+      {label:'Aerofólios',                 file:'Aerofólios'},
+      {label:'Algodão',                    file:'Algodão'},
+      {label:'Amortecedor de Porta Mala',  file:'Amortecedor de Porta Mala'},
+      {label:'Anti Ruído',                 file:'Anti Ruído'},
+      {label:'Antenas',                    file:'Antenas'},
+      {label:'Apliques',                   file:'Apliques'},
+      {label:'Aros',                       file:'Aros'},
+      {label:'Assoalhos',                  file:'Assoalhos'},
+      {label:'Bagagitos',                  file:'Bagagitos'},
+      {label:'Bola de Câmbio',             file:'Bola de Câmbio'},
+      {label:'Borracha de Porta',          file:'Borracha de Porta'},
+      {label:'Borrachas Diversas',         file:'Borrachas Diversas'},
+      {label:'Botões',                     file:'Botões'},
+      {label:'Braços e Palhetas',          file:'Braços e Palhetas'},
+      {label:'Brake Light / Luz de Freio', file:'Brake Light - Luz de Freio'},
+      {label:'Buzinas',                    file:'Buzinas'},
+      {label:'Cabos e Cordas',             file:'Cabos e Cordas'},
+      {label:'Calhas de Chuva',            file:'Calhas de Chuva'},
+      {label:'Calotas',                    file:'Calotas'},
+      {label:'Canaletas',                  file:'Canaletas'},
+      {label:'Capas de Retrovisor',        file:'Capas de Retrovisor'},
+      {label:'Capuz',                      file:'Capuz'},
+      {label:'Cera e Massa de Polir',      file:'Cera e Massa de Polir'},
+      {label:'Chave de Roda',              file:'Chave de Roda'},
+      {label:'Chave de Seta',              file:'Chave de Seta'},
+      {label:'Cilindros com Chave',        file:'Cilindros com Chave'},
+      {label:'Cintos de Segurança',        file:'Cintos de Segurança'},
+      {label:'Circuito de Lâmpadas e Lanternas', file:'Circuito de Lâmpadas e Lanternas'},
+      {label:'Coifa de Câmbio',            file:'Coifa de Câmbio'},
+      {label:'Cola',                       file:'Cola'},
+      {label:'Comutadores',                file:'Comutadores'},
+      {label:'Desengripante',              file:'Desengripante'},
+      {label:'Difusores de Ar',            file:'Difusores de Ar'},
+      {label:'Dobradiças',                 file:'Dobradiças'},
+      {label:'Dupla Face',                 file:'Dupla Face'},
+      {label:'Emblemas e Logotipos',       file:'Emblemas e Logotipos'},
+      {label:'Esguichador de Água',        file:'Esguichador de Água'},
+      {label:'Estribos',                   file:'Estribos'},
+      {label:'Extintores',                 file:'Extintores'},
+      {label:'Faixas',                     file:'Faixas'},
+      {label:'Farol',                      file:'Farol'},
+      {label:'Farol de Milha',             file:'Farol de Milha'},
+      {label:'Ferragens',                  file:'Ferragens'},
+      {label:'Filtros',                    file:'Filtros'},
+      {label:'Fitas Adesivas',             file:'Fitas Adesivas'},
+      {label:'Folha de Porta',             file:'Folha de Porta'},
+      {label:'Forrações',                  file:'Forrações'},
+      {label:'Friso de Para-choque',       file:'Friso de Para-choque'},
+      {label:'Friso de Teto',              file:'Friso de Teto'},
+      {label:'Friso Lateral',              file:'Friso Lateral'},
+      {label:'Fusível',                    file:'Fusível'},
+      {label:'Grades',                     file:'Grades'},
+      {label:'Grades de Para-choque',      file:'Grades de Para-choque'},
+      {label:'Grampos',                    file:'Grampos'},
+      {label:'Graxa',                      file:'Graxa'},
+      {label:'Guarnições',                 file:'Guarnições'},
+      {label:'Hastes',                     file:'Hastes'},
+      {label:'Lâmpadas',                   file:'Lâmpadas'},
+      {label:'Lanterna de Placa',          file:'Lanterna de Placa'},
+      {label:'Lanterna de Teto',           file:'Lanterna de Teto'},
+      {label:'Lanterna Dianteira',         file:'Lanterna Dianteira'},
+      {label:'Lanterna Lateral',           file:'Lanterna Lateral'},
+      {label:'Lanterna Traseira',          file:'Lanterna Traseira'},
+      {label:'Lataria',                    file:'Lataria'},
+      {label:'Lente com Base de Retrovisor', file:'Lente c- Base de Retrovisor'},
+      {label:'Lente de Farol',             file:'Lente de Farol'},
+      {label:'Lente de Lanterna',          file:'Lente de Lanterna'},
+      {label:'Lente de Retrovisor',        file:'Lente de Retrovisor'},
+      {label:'Limitadores',                file:'Limitadores'},
+      {label:'Lubrificantes',              file:'Lubrificantes'},
+      {label:'Macaco',                     file:'Macaco'},
+      {label:'Maçaneta e Fechadura',       file:'Maçaneta e Fechadura'},
+      {label:'Mangueiras',                 file:'Mangueiras'},
+      {label:'Manivelas',                  file:'Manivelas'},
+      {label:'Massa de Vedação',           file:'Massa de Vedação'},
+      {label:'Materiais de Limpeza',       file:'Materiais de Limpeza'},
+      {label:'Máquina de Vidro',           file:'Máquina de Vidro'},
+      {label:'Moldura de Paralama',        file:'Moldura de Paralama'},
+      {label:'Molduras Internas e Externas',  file:'Molduras Int-Ext'},
+      {label:'Moto Bomba',                 file:'Moto Bomba'},
+      {label:'Odorizante',                 file:'Odorizante'},
+      {label:'Óleo de Freio',              file:'Óleo de Freio'},
+      {label:'Painel Dianteiro',           file:'Painel Dianteiro'},
+      {label:'Painel Traseiro',            file:'Painel Traseiro'},
+      {label:'Palhetas',                   file:'Palhetas'},
+      {label:'Para-choque',                file:'Para-choque'},
+      {label:'Parabarros',                 file:'Parabarros'},
+      {label:'Paralama',                   file:'Paralama'},
+      {label:'Parafusos',                  file:'Parafusos'},
+      {label:'Pestanas',                   file:'Pestanas'},
+      {label:'Polainas',                   file:'Polainas'},
+      {label:'Porca de Estepe',            file:'Porca de Estepe'},
+      {label:'Porta Objetos',              file:'Porta Objetos'},
+      {label:'Portinholas de Tanque',      file:'Portinholas de Tanque'},
+      {label:'Portas',                     file:'Portas'},
+      {label:'Protetores',                 file:'Protetores'},
+      {label:'Puxador',                    file:'Puxador'},
+      {label:'Quebra-sol',                 file:'Quebra-sol'},
+      {label:'Querosene',                  file:'Querosene'},
+      {label:'Rack',                       file:'Rack'},
+      {label:'Refletor',                   file:'Refletor'},
+      {label:'Regulador',                  file:'Regulador'},
+      {label:'Remendos Diversos',          file:'Remendos Diversos'},
+      {label:'Reservatório',               file:'Reservatório'},
+      {label:'Retrovisor',                 file:'Retrovisor'},
+      {label:'Roldanas',                   file:'Roldanas'},
+      {label:'Saias',                      file:'Saias'},
+      {label:'Soleiras',                   file:'Soleiras'},
+      {label:'Spoilers',                   file:'Spoilers'},
+      {label:'Sprays Diversos',            file:'Sprays Diversos'},
+      {label:'Sprays para Pintura',        file:'Sprays para Pintura'},
+      {label:'Suportes',                   file:'Suportes'},
+      {label:'Suportes Tampão',            file:'Suportes Tampão'},
+      {label:'Tampa Traseira',             file:'Tampa Traseira'},
+      {label:'Tampas Diversas',            file:'Tampas Diversas'},
+      {label:'Tanque',                     file:'Tanque'},
+      {label:'Tapetes',                    file:'Tapetes'},
+      {label:'Terminal',                   file:'Terminal'},
+      {label:'Thinner',                    file:'Thinner'},
+      {label:'Tomada de Engate',           file:'Tomada de Engate'},
+      {label:'Travas',                     file:'Travas'},
+      {label:'Triângulos',                 file:'Triângulos'},
+      {label:'Trincos',                    file:'Trincos'},
+      {label:'Varetas',                    file:'Varetas'},
+      {label:'Vedantes',                   file:'Vedantes'},
+      {label:'Viga de Para-choque',        file:'Viga de Para-choque'},
+      {label:'Volante',                    file:'Volante'}
+    ];
+
+    items.sort(function(a,b){ return a.label.localeCompare(b.label,'pt'); });
+
+    var EXTS = ['jpg','jpeg','png','webp','gif'];
+    var activeLetter = 'Todos';
+    var activeSearch = '';
+    var acIndex = -1;
+
+    var grid       = document.getElementById('grid');
+    var noResults  = document.getElementById('noResults');
+    var acList     = document.getElementById('autocompleteList');
+    var searchInput= document.getElementById('searchInput');
+
+    /* ── BARRA A-Z ── */
+    var azBarEl = document.getElementById('azBar');
+    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    var usedLetters = {};
+    items.forEach(function(it){ usedLetters[it.label[0].toUpperCase()] = true; });
+
+    var allBtn = document.createElement('button');
+    allBtn.className = 'az-btn az-all active';
+    allBtn.textContent = 'Todos';
+    allBtn.dataset.letter = 'Todos';
+    allBtn.onclick = function() { setLetter('Todos'); };
+    azBarEl.appendChild(allBtn);
+
+    letters.forEach(function(l) {
+      var btn = document.createElement('button');
+      btn.className = 'az-btn' + (usedLetters[l] ? '' : ' disabled');
+      btn.textContent = l;
+      btn.dataset.letter = l;
+      btn.onclick = function() { if (usedLetters[l]) setLetter(l); };
+      azBarEl.appendChild(btn);
+    });
+
+    function setLetter(l) {
+      activeLetter = l;
+      activeSearch = '';
+      searchInput.value = '';
+      closeAutocomplete();
+      document.querySelectorAll('.az-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelector('.az-btn[data-letter="' + l + '"]').classList.add('active');
+      renderGrid();
+    }
+
+    /* ── RENDER GRID ── */
+    function renderGrid() {
+      grid.innerHTML = '';
+      var total = 0;
+      items.forEach(function(it) {
+        var matchLetter = activeLetter === 'Todos' || it.label[0].toUpperCase() === activeLetter;
+        var matchSearch = !activeSearch || it.label.toLowerCase().includes(activeSearch.toLowerCase());
+        if (!matchLetter || !matchSearch) return;
+        grid.appendChild(buildCard(it.label, it.file));
+        total++;
+      });
+      noResults.style.display = total === 0 ? 'block' : 'none';
+    }
+
+    function buildCard(name, fileName) {
+      if (!fileName) fileName = name;
+      var card = document.createElement('div');
+      card.className = 'cat-card';
+      card.dataset.name = name.toLowerCase();
+
+      var stripe = document.createElement('div');
+      stripe.className = 'card-header-stripe';
+      card.appendChild(stripe);
+
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'card-img-wrap';
+
+      var ph = document.createElement('div');
+      ph.className = 'card-img-placeholder';
+      ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto em breve</span>';
+      imgWrap.appendChild(ph);
+
+      (function(imgWrapEl, placeholderEl, itemName, fileNameLocal) {
+        var idx = 0;
+        function tryNext() {
+          if (idx >= EXTS.length) return;
+          var img = new Image();
+          img.onload = function() {
+            placeholderEl.style.display = 'none';
+            var imgEl = document.createElement('img');
+            imgEl.src = img.src; imgEl.alt = itemName;
+            imgEl.onclick = function() { openLightbox(img.src, itemName); };
+            var ratio = img.naturalWidth / img.naturalHeight;
+            if (ratio < 0.75) {
+              imgEl.style.objectFit = 'contain'; imgEl.style.padding = '8px';
+            } else {
+              imgEl.style.objectFit = 'cover'; imgEl.style.padding = '0';
+            }
+            imgWrapEl.insertBefore(imgEl, imgWrapEl.firstChild);
+          };
+          img.onerror = function() { idx++; tryNext(); };
+          img.src = fileNameLocal + '.' + EXTS[idx];
+        }
+        tryNext();
+      })(imgWrap, ph, name, fileName);
+
+      card.appendChild(imgWrap);
+
+      var body = document.createElement('div');
+      body.className = 'card-body';
+      var dot = document.createElement('div'); dot.className = 'cat-dot';
+      var nameEl = document.createElement('span'); nameEl.className = 'cat-name'; nameEl.textContent = name;
+      body.appendChild(dot); body.appendChild(nameEl);
+      card.appendChild(body);
+      return card;
+    }
+
+    /* ── AUTOCOMPLETE ── */
+    function onSearchInput() {
+      var q = searchInput.value.trim();
+      activeSearch = q;
+      acIndex = -1;
+
+      if (q.length < 1) { closeAutocomplete(); renderGrid(); return; }
+
+      var matches = items
+        .filter(function(it){ return it.label.toLowerCase().includes(q.toLowerCase()); })
+        .slice(0, 8);
+
+      if (matches.length === 0) { closeAutocomplete(); renderGrid(); return; }
+
+      acList.innerHTML = '';
+      matches.forEach(function(name) {
+        var div = document.createElement('div');
+        div.className = 'autocomplete-item';
+        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\$&') + ')', 'gi');
+        div.innerHTML = name.replace(re, '<mark>$1</mark>');
+        div.onclick = function() {
+          searchInput.value = name;
+          activeSearch = name;
+          closeAutocomplete();
+          renderGrid();
+        };
+        acList.appendChild(div);
+      });
+      acList.classList.add('open');
+      renderGrid();
+    }
+
+    function onSearchKeydown(e) {
+      var items2 = acList.querySelectorAll('.autocomplete-item');
+      if (e.key === 'ArrowDown') { acIndex = Math.min(acIndex+1, items2.length-1); highlightAC(items2); e.preventDefault(); }
+      else if (e.key === 'ArrowUp') { acIndex = Math.max(acIndex-1, -1); highlightAC(items2); e.preventDefault(); }
+      else if (e.key === 'Enter') {
+        if (acIndex >= 0 && items2[acIndex]) { items2[acIndex].click(); }
+        else { closeAutocomplete(); renderGrid(); }
+      }
+      else if (e.key === 'Escape') { closeAutocomplete(); }
+    }
+
+    function highlightAC(items2) {
+      items2.forEach(function(it, i){ it.classList.toggle('active', i === acIndex); });
+      if (acIndex >= 0 && items2[acIndex]) searchInput.value = items2[acIndex].textContent.trim();
+    }
+
+    function closeAutocomplete() { acList.classList.remove('open'); acList.innerHTML = ''; acIndex = -1; }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.search-wrap')) closeAutocomplete();
+    });
+
+    /* ── LIGHTBOX ── */
+    function openLightbox(src, title) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+    /* ── INIT ── */
+    renderGrid();
+  </script>
+</body>
+</html>
